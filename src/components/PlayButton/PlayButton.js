@@ -4,18 +4,11 @@ import './PlayButton.css';
 class PlayButton extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      play: false
-    };
     this.buttonClick = this.buttonClick.bind(this);
   }
 
   buttonClick() {
-    const statePlay = !this.state.play;
-    this.setState({
-      play: statePlay
-    });
-      this.props.onPlayButton(this.state.play);
+    this.props.onPlayButton(!this.props.play);
   }
 
   render() {

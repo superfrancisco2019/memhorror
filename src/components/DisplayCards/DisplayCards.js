@@ -4,32 +4,33 @@ import "./DisplayCards.css";
 class DisplayCards extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      cards: null
-    };
+    this.getRandomCards = this.getRandomCards.bind(this);
   }
 
-  componentDidMount() {
-    this.setState({
-      cards: this.props.dataCards
-    });
+  getRandomCards() {
+    const { cards } = this.props;
+    const newCards = [...cards];
+    const result = [];
+    for (let i = 0; i < 8; i++) {
+      const index = Math.floor(Math.random() * newCards.length);
+      result.push(
+        <div key={newCards[index].id}>
+          <p>{newCards[index].id}</p>
+          <img src={newCards[index].posterUrl} alt="/" />
+        </div>,
+        <div key={newCards[index].id + 1}>
+          <p>{newCards[index].id}</p>
+          <img src={newCards[index].posterUrl} alt="/" />
+        </div>
+      );
+      newCards.slice(index, 1);
+    }
+    console.log(result)
+    return result.sort(function() { return 0.5 - Math.random() });
   }
 
   render() {
-    let { cards } = this.state;
-    return (
-      <div className="DisplayCards">
-        {cards &&
-          cards
-            .map(index => cards[Math.floor(Math.random(index) * cards.length)])
-            .map(card => (
-              <li key={card.id}>
-                <p>{card.id}</p>
-                <img src={card.posterUrl} alt="" />
-              </li>
-            ))}
-      </div>
-    );
+    return <div className="DisplayCards">{this.getRandomCards()}</div>;
   }
 }
 

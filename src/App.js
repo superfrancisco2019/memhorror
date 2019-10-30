@@ -19,8 +19,8 @@ class App extends Component {
     return (
       <div className="App">
         {isLoading && <Loading stepIsLoading={(isLoading) => this.setState({ isLoading }) } />}
-        <PlayButton onPlayButton={(play) => this.setState({ play })} />
-        {play && <GetCards play />}
+        <PlayButton play={play} onPlayButton={(play) => this.setState({ play })} />
+        {play && <GetCards play={play} />}
       </div>
     );
   }
