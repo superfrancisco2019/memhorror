@@ -28,9 +28,10 @@ class GetCards extends React.Component{
     }
     
     render() {
+        const { cards } = this.state
         return (
             <div className="GetCards">
-                <DisplayCards cards={this.state.cards} />
+                <DisplayCards cards={cards} />
             </div>
         )
     }
