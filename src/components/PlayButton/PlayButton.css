@@ -1,3 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+
+.PlayButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Montserrat';
+}
+
+.start__button {
+    
+    padding: 15px 25px;
+    font-size: 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 4px 4px 3px red;
+    outline: none;
+    color: black;
+    border: solid black 1px;
+    border-radius: 15px;
+    box-shadow: 0 12px #800000;
+    height: 15%;
+    width: 10%;
+    background-color: #fff;
+}
+  
+.start__button:hover {
+  background-image: url('./images/gouttes.png');
+  background-size: cover;
+}
+  
+.start__button:active {
+    background-image: url('./images/splatter1.png');
+    background-size: cover;
+    transform: translateY(4px);
+}
 .PlayButton{
     display: flex;
     justify-content: center;
@@ -14,19 +54,20 @@
     text-shadow: 4px 4px 3px red;
     outline: none;
     color: black;
-    border: none;
+    border: 0.5px black solid;
     border-radius: 15px;
-    box-shadow: 0 9px #800000;
-    height: 10%;
+    box-shadow: 0 15px #800000;
+    height: 15%;
+
 }
   
 .start__button:hover {
-  background-image: url('../gouttes.png');
+  background-image: url('./images/gouttes.png');
   background-size: cover;
 }
   
 .start__button:active {
-    background-image: url('../splatter1.png');
+    background-image: url('./images/splatter1.png');
     background-size: cover;
-    transform: translateY(4px);
+    transform: translateY(6px);
 }
