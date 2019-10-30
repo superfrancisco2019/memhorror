@@ -1,0 +1,32 @@
+.PlayButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.start__button {
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 4px 4px 3px red;
+    outline: none;
+    color: black;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #800000;
+    height: 10%;
+}
+  
+.start__button:hover {
+  background-image: url('../gouttes.png');
+  background-size: cover;
+}
+  
+.start__button:active {
+    background-image: url('../splatter1.png');
+    background-size: cover;
+    transform: translateY(4px);
+}
