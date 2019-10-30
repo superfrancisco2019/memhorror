@@ -1,6 +1,7 @@
 import React from 'react'
 import './PlayButton.css'
 
+
 class PlayButton extends React.Component{
 
 buttonClick(){
@@ -9,6 +10,7 @@ buttonClick(){
 
 render(){
     return(
+        
         <div className='PlayButton'>  
             <button className='start__button' onClick= {this.buttonClick}>
                 start
