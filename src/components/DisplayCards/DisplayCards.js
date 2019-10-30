@@ -1,27 +1,33 @@
 import React, { Component } from "react";
-import './DisplayCards.css';
+import "./DisplayCards.css";
 
 class DisplayCards extends Component {
   constructor(props) {
     super(props);
     this.state = {
       cards: null
-    }
+    };
   }
 
   componentDidMount() {
     this.setState({
       cards: this.props.dataCards
-    })
+    });
   }
 
   render() {
-    console.log(this.state.cards)
+    let { cards } = this.state;
     return (
-      <div className="card">
-        
+      <div className="DisplayCards">
+        {cards && cards
+          .map((index) => cards[Math.floor(Math.random(index)*cards.length)])
+          .map((card) =>
+          <li key={card.id}>
+            <p>{card.id}</p>
+            <img src={card.posterUrl} alt=""/>
+          </li>
+        )}
       </div>
-
     );
   }
 }

@@ -25,7 +25,7 @@ class GetCards extends Component {
       .then(response => response.data)
       .then(data => {
         this.setState({
-          cards: data
+          cards: data.movies
         });
       });
   }
