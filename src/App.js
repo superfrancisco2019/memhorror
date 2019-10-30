@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import PlayButton from "./components/PlayButton/PlayButton";
 import GetCards from "./components/GetCards/GetCards";
-import Loading from "./components/Loading/Loading";
+import Loading from "./components/Loading/Loading"
 
 class App extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class App extends Component {
       <div className="App">
         {isLoading && <Loading stepIsLoading={(isLoading) => this.setState({ isLoading }) } />}
         <PlayButton onPlayButton={(play) => this.setState({ play })} />
-        {/* {play && <GetCards />} */}
+        {play && <GetCards play />}
       </div>
     );
   }
