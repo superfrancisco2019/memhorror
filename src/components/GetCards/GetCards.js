@@ -30,6 +30,7 @@ class GetCards extends React.Component{
     render() {
         return (
             <div className="GetCards">
+                <DisplayCards cards={this.state.cards} />
             </div>
         )
     }
