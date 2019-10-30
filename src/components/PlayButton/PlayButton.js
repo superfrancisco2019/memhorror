@@ -18,7 +18,6 @@ class PlayButton extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="PlayButton">
         <button className="start__button" onClick={this.buttonClick}>

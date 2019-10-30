@@ -1,20 +1,21 @@
-import React from "react";
+import React, { Component } from "react";
 import axios from "axios";
+import DisplayCards from "../DisplayCards/DisplayCards";
 
-class GetCards extends React.Component {
+class GetCards extends Component {
   constructor(props) {
     super(props);
-      this.state = {
-        play: false,
-        cards: ""
+    this.state = {
+      play: false,
+      cards: null
     };
     this.getCards = this.getCards.bind(this);
   }
 
-    componentDidMount() {
-        this.setState({
-          play: this.props.play
-      })
+  componentDidMount() {
+    this.setState({
+      play: this.props.play
+    });
     this.getCards();
   }
 
@@ -29,14 +30,13 @@ class GetCards extends React.Component {
       });
   }
 
-    render() {
-        const { cards } = this.state;
-        console.log(this.state)
-        return (
-            <div className="GetCards">
-                <h1>HELLO</h1>
-            </div>)
-            ;
+  render() {
+    const { cards } = this.state;
+    return (
+      <div className="GetCards">
+            {cards && <DisplayCards dataCards={cards} />}
+      </div>
+    );
   }
 }
 
