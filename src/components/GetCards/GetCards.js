@@ -1,12 +1,13 @@
 import React from "react";
 import axios from "axios";
+import DisplayCards from "../DisplayCards/DisplayCards";
 
 class GetCards extends React.Component {
   constructor(props) {
     super(props);
       this.state = {
         play: false,
-        cards: ""
+        cards: null
     };
     this.getCards = this.getCards.bind(this);
   }
@@ -35,6 +36,7 @@ class GetCards extends React.Component {
         return (
             <div className="GetCards">
                 <h1>HELLO</h1>
+                {cards && <DisplayCards dataCards={cards}/>}
             </div>)
             ;
   }
