@@ -5,12 +5,7 @@ class DisplayCards extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: null,
-      compare: {
-        card1: null,
-        card2: null,
-        isMatching: false
-      }
+      cards: null
     };
   }
 
@@ -30,7 +25,7 @@ class DisplayCards extends Component {
             .map(card => (
               <li key={card.id}>
                 <p>{card.id}</p>
-                <img  src={card.posterUrl} alt="" />
+                <img src={card.posterUrl} alt="" />
               </li>
             ))}
       </div>
