@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./DisplayCards.css";
 import ItemCard from "../ItemCard/ItemCard";
 import Counter from "../Counter/Counter";
+import ResetButton from "../ResetButton/ResetButton"
 
 class DisplayCards extends Component {
   constructor(props) {
@@ -82,6 +83,7 @@ class DisplayCards extends Component {
             tabMatching={matchingCards.includes(x.id)}
           />
         ))}
+        {countWin === 8 && <ResetButton />}
       </div>
     );
   }
