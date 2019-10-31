@@ -1,0 +1,10 @@
+.ItemCard {
+    list-style: none;
+    width: 25%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.ItemCard img {
+    max-width: 100%;
+}
