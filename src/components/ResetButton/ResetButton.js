@@ -1,20 +1,13 @@
-import React, {Component} from "react";
+import React from "react";
 
-class ResetButton extends Component {
-
-  restartGame() {
-    window.location.reload()
-  }
-
-  render() {
-    return(
-      <div className="ResetButton">
-        <button type="submit" onClick={this.restartGame}>
-          RE JOUERS
-        </button>
-      </div>
-    )
-  }
+function ResetButton() {
+  return (
+    <div className="ResetButton">
+      <button type="submit" onClick="refreshPage()">
+        Refresh Button
+      </button>
+      <script>function refreshPage(){window.location.reload()}</script>
+    </div>
+  );
 }
-
 export default ResetButton;
