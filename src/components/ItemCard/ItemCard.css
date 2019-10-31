@@ -9,3 +9,11 @@
     max-width: 100%;
     cursor: pointer;
 }
+
+.ItemCard--checked {
+    filter: opacity(0);
+}
+
+.ItemCard--checked img {
+    cursor:not-allowed;
+}

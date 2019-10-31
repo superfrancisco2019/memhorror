@@ -13,8 +13,9 @@ class ItemCard extends Component {
     
   render() {
     return (
-        <div className="ItemCard" key={this.props.idCard}>
-          <img onClick={this.clickCard} src={this.props.imageCard} alt="/" />
+      <div className={this.props.tabMatching ? "ItemCard ItemCard--checked" : "ItemCard"} key={this.props.idCard}>
+
+          <img onClick={!this.props.tabMatching && this.clickCard} src={this.props.imageCard} alt="/" />
         </div>
     );
   }

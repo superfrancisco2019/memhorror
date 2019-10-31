@@ -67,6 +67,7 @@ class DisplayCards extends Component {
   render() {
     const { countWin } = this.state
     const { countTry } = this.state
+    const { matchingCards } = this.state
     
     console.log(this.state);
     return (
@@ -78,6 +79,7 @@ class DisplayCards extends Component {
             idCard={x.id}
             imageCard={x.posterUrl}
             compareId={this.compareId}
+            tabMatching={matchingCards.includes(x.id)}
           />
         ))}
       </div>
