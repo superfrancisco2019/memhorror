@@ -21,7 +21,7 @@ class App extends Component {
       <div className={play ? "App App--active" : "App" }>
         {isLoading && <Loading stepIsLoading={(isLoading) => this.setState({ isLoading }) } />}
         <Header />
-        <PlayButton play={play} onPlayButton={(play) => this.setState({ play })} play={play} />
+        <PlayButton onPlayButton={(play) => this.setState({ play })} play={play} />
         {play && <GetCards play={play} />}
       </div>
     );

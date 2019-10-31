@@ -1,26 +1,27 @@
 import React, { Component } from "react";
 import "./DisplayCards.css";
 import ItemCard from "../ItemCard/ItemCard";
+import Counter from "../Counter/Counter";
 
 class DisplayCards extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        clickedId: null,
-        currentId: null,
-        matchingCards: [],
-        countTry: 0,
-        countWin: 0
-    }
+      clickedId: null,
+      currentId: null,
+      matchingCards: [],
+      countTry: 0,
+      countWin: 0
+    };
     this.getRandomCards = this.getRandomCards.bind(this);
-    this.compareId = this.compareId.bind(this)
+    this.compareId = this.compareId.bind(this);
   }
 
   randomCardsCache = null;
 
   getRandomCards() {
     if (this.randomCardsCache) {
-      return this.randomCardsCache
+      return this.randomCardsCache;
     }
     const { cards } = this.props;
     const newCards = [...cards];
@@ -30,40 +31,57 @@ class DisplayCards extends Component {
       result.push(newCards[index], newCards[index]);
       newCards.splice(index, 1);
     }
-    this.randomCardsCache = result.sort(function() { return 0.5 - Math.random() })
-    return result
+    this.randomCardsCache = result.sort(function() {
+      return 0.5 - Math.random();
+    });
+    return result;
   }
 
   compareId(id) {
     this.setState({
-      clickedId : id
-    })
-      const { clickedId } = this.state
-      const { currentId } = this.state
-      const { countWin } = this.state
-      const { countTry } = this.state
-      const {matchingCards} = this.state
-      if (clickedId) {
-          this.setState({ currentId: clickedId })
+      clickedId: id
+    });
+    const { currentId, countWin, countTry, matchingCards } = this.state;
+    if (id) {
+      this.setState({ currentId: id });
+    }
+    if (currentId) {
+      if (currentId === id) {
+        matchingCards.push(currentId)
+        this.setState({
+          currentId: null,
+          clickedId: null,
+          countWin: countWin + 1,
+          countTry: countTry + 1
+        });
+      } else {
+        this.setState({
+          currentId: null,
+          clickedId: null,
+          countTry: countTry + 1
+        });
       }
-      
-      if (clickedId) {
-          if (currentId === clickedId) {
-              this.setState({ currentId: null, clickedId: null, countWin: countWin + 1 })
-              alert('bien joué!!')
-          } else {
-              this.setState({ currentId: null, clickedId: null, countTry: countTry+1 })
-          }
-      }
+    }
   }
 
   render() {
-    console.log(this.state)
+    const { countWin } = this.state
+    const { countTry } = this.state
+    
+    console.log(this.state);
     return (
       <div className="DisplayCards">
-        {this.getRandomCards().map((x,index) => <ItemCard key={x.id + "-" + index} idCard={x.id} imageCard={x.posterUrl} compareId={this.compareId} />)}
+        <Counter try={countTry} win={countWin} />
+        {this.getRandomCards().map((x, index) => (
+          <ItemCard
+            key={x.id + "-" + index}
+            idCard={x.id}
+            imageCard={x.posterUrl}
+            compareId={this.compareId}
+          />
+        ))}
       </div>
-    )
+    );
   }
 }
 
