@@ -15,13 +15,15 @@ class DisplayCards extends Component {
       const index = Math.floor(Math.random() * newCards.length);
         result.push(
             <div key={newCards[index].id}>
-                <p>{newCards[index].id}</p>
-                <img src={newCards[index].posterUrl} alt="/" />
+                <img src={newCards[index].posterUrl} alt={newCards[index].title} />
+            </div>,
+            <div key={newCards[index].id}>
+                <img src={newCards[index].posterUrl} alt={newCards[index].title} />
             </div>
-        );
-      newCards.slice(index, 1);
+        ); 
+        newCards.slice(index, 1);
+        result.sort();
     }
-      console.log(result)
     return result;
   }
 
