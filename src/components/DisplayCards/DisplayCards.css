@@ -1,0 +1,23 @@
+.DisplayCards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    width:80%;
+    margin:30px auto;
+    padding: 30px;
+    box-sizing: border-box;
+    background: black;
+}
+
+.card__items {
+    list-style: none;
+    width: 25%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.card__items img {
+    max-width: 100%;
+}

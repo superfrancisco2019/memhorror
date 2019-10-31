@@ -1,0 +1,23 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: url(./images/bg.jpg) center no-repeat; 
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    overflow-y:scroll;
+}
+
+.App--active {
+    justify-content: flex-start;
+}
