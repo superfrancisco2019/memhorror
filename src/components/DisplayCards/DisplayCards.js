@@ -8,11 +8,11 @@ class DisplayCards extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clickedId: null,
-      currentId: null,
+      lastClickId: null,
       matchingCards: [],
       countTry: 0,
-      countWin: 0
+      countWin: 0,
+      cards: props.cards.map((c, i) => ({ ...c, key: `${c.id}-${i}`, hidden: true }))
     };
     this.getRandomCards = this.getRandomCards.bind(this);
     this.compareId = this.compareId.bind(this);
@@ -24,12 +24,12 @@ class DisplayCards extends Component {
     if (this.randomCardsCache) {
       return this.randomCardsCache;
     }
-    const { cards } = this.props;
+    const { cards } = this.state;
     const newCards = [...cards];
     const result = [];
     for (let i = 0; i < 8; i++) {
       const index = Math.floor(Math.random() * newCards.length);
-      result.push(newCards[index], newCards[index]);
+      result.push(newCards[index].key, newCards[index].key);
       newCards.splice(index, 1);
     }
     this.randomCardsCache = result.sort(function() {
@@ -38,51 +38,84 @@ class DisplayCards extends Component {
     return result;
   }
 
-  compareId(id) {
+  displayClickedCard(currentClickKey) {
+    const { cards } = this.state;
     this.setState({
-      clickedId: id
-    });
-    const { currentId, countWin, countTry, matchingCards } = this.state;
-    if (id) {
-      this.setState({ currentId: id });
+      cards: cards.map(card => card.key === currentClickKey
+        ? {
+          ...card,
+          hidden: !card.hidden,
+        }
+        : card
+      )
+    })
+  }
+
+  hideClickedCards(currentClickId) {
+    const { cards } = this.state;
+    this.setState({
+      lastClickId: null,
+      cards: cards.map(card => card.id === currentClickId
+        ? {
+          ...card,
+          hidden: true,
+        }
+        : card
+      )
+    })
+  }
+
+  compareId(currentClickId, currentClickKey) {
+    const {
+      lastClickId,
+      countWin,
+      countTry,
+      matchingCards,
+    } = this.state;
+
+    this.displayClickedCard(currentClickKey);
+
+    if (lastClickId === currentClickKey) {
+      this.setState({
+        lastClickId: null,
+        countWin: countWin + 1,
+        matchingCards: [...matchingCards, currentClickId],
+      })
+    } else if (lastClickId) {
+      setTimeout(() => {
+        this.hideClickedCards(currentClickId);
+      }, 1500)
+    } else {
+      this.setState({
+        lastClickId: currentClickKey
+      })
     }
-    if (currentId) {
-      if (currentId === id) {
-        matchingCards.push(currentId)
-        this.setState({
-          currentId: null,
-          clickedId: null,
-          countWin: countWin + 1,
-          countTry: countTry + 1
-        });
-      } else {
-        this.setState({
-          currentId: null,
-          clickedId: null,
-          countTry: countTry + 1
-        });
-      }
-    }
+
+    this.setState({
+      countTry: countTry + 1
+    })
   }
 
   render() {
-    const { countWin } = this.state
-    const { countTry } = this.state
-    const { matchingCards } = this.state
+    const { countWin, countTry, matchingCards, cards } = this.state
     
-    console.log(this.state);
     return (
       <div className="DisplayCards">
         <Counter try={countTry} win={countWin} />
-        {this.getRandomCards().map((x, index) => (
-          <ItemCard
-            key={x.id + "-" + index}
-            idCard={x.id}
-            imageCard={x.posterUrl}
-            compareId={this.compareId}
-            tabMatching={matchingCards.includes(x.id)}
-          />
-        ))}
+        {this.getRandomCards().map(key => {
+          const card = cards.find(c => c.key === key);
+          return (
+            <ItemCard
+              id={card.id}
+              uniqueKey={card.key}
+              key={card.key}
+              imageCard={card.posterUrl}
+              compareId={this.compareId}
+              tabMatching={matchingCards.includes(key)}
+              hidden={card.hidden}
+            />
+          )
+        })}
         {countWin === 8 && <ResetButton />}
       </div>
     );
