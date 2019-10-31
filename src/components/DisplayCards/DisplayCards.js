@@ -4,9 +4,13 @@ import "./DisplayCards.css";
 class DisplayCards extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      cardId: null,
+      matchingCards : []
+      
+    }
     this.getRandomCards = this.getRandomCards.bind(this);
   }
-
   getRandomCards() {
     const { cards } = this.props;
     const newCards = [...cards];
@@ -23,7 +27,6 @@ class DisplayCards extends Component {
       );
       newCards.slice(index, 1);
     }
-    console.log(result)
     return result.sort(function() { return 0.5 - Math.random() });
   }
 
