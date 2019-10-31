@@ -14,14 +14,12 @@ class DisplayCards extends Component {
     for (let i = 0; i < 8; i++) {
       const index = Math.floor(Math.random() * newCards.length);
       result.push(
-        <div key={newCards[index].id}>
-          <p>{newCards[index].id}</p>
+        <li className="card__items" key={newCards[index].id}>
           <img src={newCards[index].posterUrl} alt="/" />
-        </div>,
-        <div key={newCards[index].id + 1}>
-          <p>{newCards[index].id}</p>
+        </li>,
+        <li className="card__items" key={newCards[index].id + 1}>
           <img src={newCards[index].posterUrl} alt="/" />
-        </div>
+        </li>
       );
       newCards.slice(index, 1);
     }
@@ -30,7 +28,7 @@ class DisplayCards extends Component {
   }
 
   render() {
-    return <div className="DisplayCards">{this.getRandomCards()}</div>;
+    return <ul className="DisplayCards">{this.getRandomCards()}</ul>;
   }
 }
 

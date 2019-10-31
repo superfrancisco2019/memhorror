@@ -12,8 +12,9 @@ class PlayButton extends React.Component {
   }
 
   render() {
+    const { play } = this.props
     return (
-      <div className="PlayButton">
+      <div className={play ? "PlayButton PlayButton--active" : "PlayButton" }>
         <button className="start__button" onClick={this.buttonClick}>
           start
         </button>
