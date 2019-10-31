@@ -17,13 +17,12 @@ class DisplayCards extends Component {
         <li className="card__items" key={newCards[index].id}>
           <img src={newCards[index].posterUrl} alt="/" />
         </li>,
-        <li className="card__items" key={newCards[index].id + 1}>
+        <li className="card__items" key={newCards[index].id *100}>
           <img src={newCards[index].posterUrl} alt="/" />
         </li>
       );
-      newCards.slice(index, 1);
+        newCards.splice(index, 1);
     }
-    console.log(result)
     return result.sort(function() { return 0.5 - Math.random() });
   }
 
