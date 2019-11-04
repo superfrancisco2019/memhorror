@@ -1,0 +1,27 @@
+.ResetButton {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    top: 0;
+}
+
+.content__restart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding:20px;
+    width: auto;
+    height: 90%;
+}
+
+.content__restart button {
+    background: #CD3B00;
+    border:0;
+    font-size: 50px;
+    font-family: 'Creepster', cursive;
+    padding: 10px 20px;
+    cursor: pointer;
+}
